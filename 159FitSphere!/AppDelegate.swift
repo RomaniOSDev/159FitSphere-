@@ -10,27 +10,56 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        FitSphereAppearance.configure()
         return true
     }
 
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
 
+private enum FitSphereAppearance {
+
+    static func configure() {
+        let textPrimary = UIColor(named: "AppTextPrimary") ?? .white
+        let textSecondary = UIColor(named: "AppTextSecondary") ?? .lightGray
+        let primary = UIColor(named: "AppPrimary") ?? .systemOrange
+        let surface = UIColor(named: "AppSurface") ?? .darkGray
+        let background = UIColor(named: "AppBackground") ?? .black
+
+        let navigationBar = UINavigationBarAppearance()
+        navigationBar.configureWithOpaqueBackground()
+        navigationBar.backgroundColor = surface
+        navigationBar.titleTextAttributes = [.foregroundColor: textPrimary]
+        navigationBar.largeTitleTextAttributes = [.foregroundColor: textPrimary]
+
+        let navigationBarProxy = UINavigationBar.appearance()
+        navigationBarProxy.standardAppearance = navigationBar
+        navigationBarProxy.scrollEdgeAppearance = navigationBar
+        navigationBarProxy.compactAppearance = navigationBar
+        navigationBarProxy.compactScrollEdgeAppearance = navigationBar
+        navigationBarProxy.tintColor = primary
+
+        let segmented = UISegmentedControl.appearance()
+        segmented.backgroundColor = background.withAlphaComponent(0.35)
+        segmented.selectedSegmentTintColor = primary
+        segmented.setTitleTextAttributes([.foregroundColor: textPrimary], for: .selected)
+        segmented.setTitleTextAttributes([.foregroundColor: textSecondary], for: .normal)
+
+        UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self]).textColor = textSecondary
+
+        UITextField.appearance().textColor = textPrimary
+        UITextField.appearance().tintColor = primary
+
+        UITableView.appearance().backgroundColor = .clear
+
+        UISwitch.appearance().onTintColor = primary
+    }
+}
