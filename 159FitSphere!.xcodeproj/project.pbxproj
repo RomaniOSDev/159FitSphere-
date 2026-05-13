@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		300F79A22FB445AB00A41BC2 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300F799C2FB445AB00A41BC2 /* AppRouter.swift */; };
+		300F79A32FB445AB00A41BC2 /* PrivacyWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300F799E2FB445AB00A41BC2 /* PrivacyWebView.swift */; };
+		300F79A42FB445AB00A41BC2 /* StartMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300F79A02FB445AB00A41BC2 /* StartMainView.swift */; };
+		300F79A52FB445AB00A41BC2 /* SaveService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300F799F2FB445AB00A41BC2 /* SaveService.swift */; };
+		300F79A62FB445AB00A41BC2 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300F799D2FB445AB00A41BC2 /* PersistenceManager.swift */; };
 		306973CE2FAE42C300EF45FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 306973C32FAE42C300EF45FD /* Assets.xcassets */; };
 		306973D02FAE42C300EF45FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 306973C72FAE42C300EF45FD /* LaunchScreen.storyboard */; };
 		306973D12FAE42C300EF45FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 306973C92FAE42C300EF45FD /* Main.storyboard */; };
@@ -48,6 +53,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		300F799C2FB445AB00A41BC2 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		300F799D2FB445AB00A41BC2 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
+		300F799E2FB445AB00A41BC2 /* PrivacyWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyWebView.swift; sourceTree = "<group>"; };
+		300F799F2FB445AB00A41BC2 /* SaveService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveService.swift; sourceTree = "<group>"; };
+		300F79A02FB445AB00A41BC2 /* StartMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMainView.swift; sourceTree = "<group>"; };
 		30696C8D2FAE09E300EF45FD /* 159FitSphere!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "159FitSphere!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		306973902FAE42C300EF45FD /* StatsPDFExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsPDFExporter.swift; sourceTree = "<group>"; };
 		306973922FAE42C300EF45FD /* Color+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+App.swift"; sourceTree = "<group>"; };
@@ -104,6 +114,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		300F79A12FB445AB00A41BC2 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				300F799C2FB445AB00A41BC2 /* AppRouter.swift */,
+				300F799D2FB445AB00A41BC2 /* PersistenceManager.swift */,
+				300F799E2FB445AB00A41BC2 /* PrivacyWebView.swift */,
+				300F799F2FB445AB00A41BC2 /* SaveService.swift */,
+				300F79A02FB445AB00A41BC2 /* StartMainView.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		30696C842FAE09E300EF45FD = {
 			isa = PBXGroup;
 			children = (
@@ -324,6 +346,7 @@
 				306973CA2FAE42C300EF45FD /* privacy_policy.md */,
 				306973CB2FAE42C300EF45FD /* SceneDelegate.swift */,
 				306973CC2FAE42C300EF45FD /* ViewController.swift */,
+				300F79A12FB445AB00A41BC2 /* Router */,
 			);
 			path = "159FitSphere!";
 			sourceTree = "<group>";
@@ -450,6 +473,11 @@
 				306973D72FAE42C300EF45FD /* RoutineModels.swift in Sources */,
 				306973D82FAE42C300EF45FD /* SessionAndBackupModels.swift in Sources */,
 				306973D92FAE42C300EF45FD /* AppStorage.swift in Sources */,
+				300F79A22FB445AB00A41BC2 /* AppRouter.swift in Sources */,
+				300F79A32FB445AB00A41BC2 /* PrivacyWebView.swift in Sources */,
+				300F79A42FB445AB00A41BC2 /* StartMainView.swift in Sources */,
+				300F79A52FB445AB00A41BC2 /* SaveService.swift in Sources */,
+				300F79A62FB445AB00A41BC2 /* PersistenceManager.swift in Sources */,
 				306973DA2FAE42C300EF45FD /* AppExternalLink.swift in Sources */,
 				306973DB2FAE42C300EF45FD /* AchievementsView.swift in Sources */,
 				306973DC2FAE42C300EF45FD /* HomeView.swift in Sources */,
@@ -527,7 +555,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ede.f1tsph3r9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -569,7 +597,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ede.f1tsph3r9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
