@@ -1,15 +1,13 @@
 //
 //  StartMainView.swift
-//  101RoastLog
-//
-//  Created by Ethit Hu on 19.03.2026.
+//  159FitSphere!
 //
 
 import SwiftUI
 
-// MARK: - Two rotating segments loader (example style)
+// MARK: - Dual orbit loader
 
-struct NewLoadTwoCircleView: View {
+struct OrbitWaitGlyph: View {
     var progress: Double
     @State private var rotationAngle: Double = 0.0
     var width: CGFloat = 72
@@ -52,7 +50,7 @@ struct NewLoadTwoCircleView: View {
             segmentArc(gradient: tailGradient, lineW: lineW, angle: rotationAngle + 180)
 
             if progress > 0.5 {
-                EndLoadingIndicator()
+                SuccessRingGlyph()
             }
         }
         .onAppear {
@@ -81,7 +79,7 @@ struct NewLoadTwoCircleView: View {
     }
 }
 
-struct EndLoadingIndicator: View {
+struct SuccessRingGlyph: View {
     private let greenColor = Color.green
 
     var body: some View {
@@ -110,18 +108,16 @@ struct EndLoadingIndicator: View {
     }
 }
 
-// MARK: - Start Main View
+// MARK: - Boot splash
 
-struct StartMainView: View {
+struct FitSphereBootSplash: View {
     var body: some View {
         ZStack {
-            // Background image
             Image(.sleep)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .ignoresSafeArea()
 
-            // Dark overlay for contrast and text readability
             LinearGradient(
                 colors: [
                     Color.black.opacity(0.35),
@@ -135,7 +131,7 @@ struct StartMainView: View {
             VStack(spacing: 24) {
                 Spacer()
 
-                NewLoadTwoCircleView(progress: 0)
+                OrbitWaitGlyph(progress: 0)
 
                 Text("Loading...")
                     .font(.system(size: 17, weight: .medium))
@@ -150,5 +146,5 @@ struct StartMainView: View {
 }
 
 #Preview {
-    StartMainView()
+    FitSphereBootSplash()
 }

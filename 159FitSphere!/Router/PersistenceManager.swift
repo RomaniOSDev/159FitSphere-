@@ -1,46 +1,37 @@
 //
 //  PersistenceManager.swift
-//  101RoastLog
-//
-//  Created by Ethit Hu on 19.03.2026.
+//  159FitSphere!
 //
 
 import Foundation
 
-class PersistenceManager {
-    static let shared = PersistenceManager()
-    
+final class FitSphereRouteVault {
+    static let shared = FitSphereRouteVault()
+
     private let savedUrlKey = "LastUrl"
     private let hasShownContentViewKey = "HasShownContentView"
     private let hasSuccessfulWebViewLoadKey = "HasSuccessfulWebViewLoad"
-    
+
     var savedUrl: String? {
         get {
-            // Синхронизация с SaveService для обратной совместимости
-            if let url = SaveService.lastUrl {
+            if let url = FitSphereLinkMirror.lastUrl {
                 return url.absoluteString
             }
             return UserDefaults.standard.string(forKey: savedUrlKey)
         }
         set {
             if let urlString = newValue {
-                print("💾 [LastUrl] WRITE UserDefaults key=\(savedUrlKey) url=\(urlString)")
                 UserDefaults.standard.set(urlString, forKey: savedUrlKey)
-                // Синхронизация с SaveService
                 if let url = URL(string: urlString) {
-                    SaveService.lastUrl = url
-                    print("💾 [LastUrl] SYNC SaveService (URL) = \(url.absoluteString)")
-                } else {
-                    print("⚠️ [LastUrl] SKIP SaveService sync — invalid URL string")
+                    FitSphereLinkMirror.lastUrl = url
                 }
             } else {
-                print("💾 [LastUrl] CLEAR UserDefaults key=\(savedUrlKey) + SaveService")
                 UserDefaults.standard.removeObject(forKey: savedUrlKey)
-                SaveService.lastUrl = nil
+                FitSphereLinkMirror.lastUrl = nil
             }
         }
     }
-    
+
     var hasShownContentView: Bool {
         get {
             UserDefaults.standard.bool(forKey: hasShownContentViewKey)
@@ -49,7 +40,7 @@ class PersistenceManager {
             UserDefaults.standard.set(newValue, forKey: hasShownContentViewKey)
         }
     }
-    
+
     var hasSuccessfulWebViewLoad: Bool {
         get {
             UserDefaults.standard.bool(forKey: hasSuccessfulWebViewLoadKey)
@@ -58,6 +49,6 @@ class PersistenceManager {
             UserDefaults.standard.set(newValue, forKey: hasSuccessfulWebViewLoadKey)
         }
     }
-    
+
     private init() {}
 }

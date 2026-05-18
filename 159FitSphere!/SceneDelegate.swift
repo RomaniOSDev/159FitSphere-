@@ -11,14 +11,13 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    private var appRouter: AppRouter?
-
+    private var launchFlowCoordinator: FitSphereLaunchCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        appRouter = AppRouter()
-        window?.rootViewController = appRouter?.initialViewController()
+        launchFlowCoordinator = FitSphereLaunchCoordinator()
+        window?.rootViewController = launchFlowCoordinator?.makeRootViewController()
         window?.makeKeyAndVisible()
     }
 
@@ -49,7 +48,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
-
